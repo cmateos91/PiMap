@@ -1,0 +1,50 @@
+/* Estilos generales */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para el login */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.25rem;
+}
+
+#loading-indicator {
+    padding: 20px;
+}
+
+/* Personalización de Pi Network */
+.fab.fa-pi {
+    font-weight: bold;
+}
+
+/* Estilo para el estado de pago */
+#payment-result {
+    transition: all 0.3s ease;
+}
+
+/* Animación para el spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-border {
+    animation: spin 1s linear infinite;
+}
+
+/* Estilos para móviles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,82 @@
+# Entorno virtual
+venv/
+env/
+ENV/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+
+# Archivos de configuración sensibles
+.env
+
+# Archivos de desarrollo
+*.log
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.orig
+.DS_Store
+
+# Archivos temporales
+*.swp
+*.swo
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencias de Node (si decides usar npm en el frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos generados por editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Archivos de base de datos
+*.sqlite
+*.db
