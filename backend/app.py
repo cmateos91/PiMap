@@ -18,8 +18,7 @@ if not PI_API_KEY:
     logger.warning('PI_API_KEY no encontrada en variables de entorno, algunas funciones no estarán disponibles')
 
 # Configuración de la aplicación Flask
-app = Flask(__name__, static_folder="frontend", static_url_path="")  # No usar carpeta estática predeterminada
-
+app = Flask(__name__, static_folder="frontend", static_url_path="")
 # Carpeta del frontend
 FRONTEND_FOLDER = Path(__file__).parent.parent / 'frontend'
 
@@ -43,14 +42,13 @@ def index():
 @app.route("/validation-key")
 def serve_validation_key_txt():
     """
-    Cuando alguien haga GET a /validation-key,
-    Flask devolverá el archivo validation-key.txt desde frontend/.
+    Cuando alguien visite /validation-key, Flask devolverá validation-key.txt
+    que está dentro de la carpeta 'frontend/'.
     """
-    # send_from_directory(envía el archivo a partir de la carpeta estática)
     return send_from_directory(
-        directory=app.static_folder,      # "frontend"
-        filename="validation-key.txt",    # el nombre exacto dentro de frontend/
-        mimetype="text/plain"             # opcional pero recomendable para .txt
+        directory=app.static_folder,  # equivale a "./frontend"
+        path="validation-key.txt",    # nombre de tu archivo .txt
+        mimetype="text/plain"
     )
 
 @app.route('/<path:path>')
@@ -77,7 +75,6 @@ app.register_blueprint(payment_routes)
 
 # Punto de entrada para ejecución directa
 if __name__ == "__main__":
-    # Render u otros PaaS inyectan PORT automáticamente, así que no lo fuerces a 8000
     port = int(os.getenv("PORT", 8000))
-    debug = os.getenv("FLASK_DEBUG", "false").lower() in ["true", "1"]
+    debug = os.getenv("FLASK_DEBUG", "false").lower() in ("true", "1")
     app.run(host="0.0.0.0", port=port, debug=debug)
