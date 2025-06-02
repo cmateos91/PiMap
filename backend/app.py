@@ -41,13 +41,17 @@ def index():
 
 # --- Nueva ruta para /validation-key ---
 @app.route("/validation-key")
-def serve_validation_key():
+def serve_validation_key_txt():
     """
-    Devuelve el archivo validation-key.html que vive en /frontend/
-    cuando alguien accede a https://<tu-app>.onrender.com/validation-key
+    Cuando alguien haga GET a /validation-key,
+    Flask devolverá el archivo validation-key.txt desde frontend/.
     """
-    # send_from_directory buscará en la carpeta "frontend" el archivo "validation-key.html"
-    return send_from_directory(app.static_folder, "validation-key.txt")
+    # send_from_directory(envía el archivo a partir de la carpeta estática)
+    return send_from_directory(
+        directory=app.static_folder,      # "frontend"
+        filename="validation-key.txt",    # el nombre exacto dentro de frontend/
+        mimetype="text/plain"             # opcional pero recomendable para .txt
+    )
 
 @app.route('/<path:path>')
 def serve_frontend(path):
@@ -72,9 +76,8 @@ app.register_blueprint(auth_routes)
 app.register_blueprint(payment_routes)
 
 # Punto de entrada para ejecución directa
-if __name__ == '__main__':
-    port = int(os.getenv('PORT', 8000))
-    debug = os.getenv('FLASK_ENV', 'production') == 'development'
-    
-    logger.info(f'Iniciando aplicación Pi Starter en puerto {port}, modo {"desarrollo" if debug else "producción"}')
-    app.run(host='0.0.0.0', port=port, debug=debug)
+if __name__ == "__main__":
+    # Render u otros PaaS inyectan PORT automáticamente, así que no lo fuerces a 8000
+    port = int(os.getenv("PORT", 8000))
+    debug = os.getenv("FLASK_DEBUG", "false").lower() in ["true", "1"]
+    app.run(host="0.0.0.0", port=port, debug=debug)
