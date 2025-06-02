@@ -114,6 +114,8 @@
                 console.error('SDK de Pi Network no disponible');
             }
             
+            const BACKEND_URL = 'https://ebf4-85-53-124-102.ngrok-free.app';
+
             // Verificar autenticación
             try {
                 const authResult = await PiAuth.checkSession();
@@ -128,7 +130,9 @@
                     donateButton: document.getElementById('donate-btn'),
                     paymentStatus: document.getElementById('payment-status'),
                     txidDisplay: document.getElementById('txid-display'),
-                    paymentResult: document.getElementById('payment-result')
+                    paymentResult: document.getElementById('payment-result'),
+
+                    baseUrl: BACKEND_URL
                 });
                 
                 // Configurar botón de logout

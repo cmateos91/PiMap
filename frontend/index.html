@@ -50,6 +50,9 @@
     <!-- Scripts de la aplicación -->
     <script src="js/auth.js"></script>
     <script>
+
+        const BACKEND_URL = 'https://ebf4-85-53-124-102.ngrok-free.app';
+
         // Inicializar el SDK tan pronto como esté disponible
         function initPiSDK() {
             if (typeof Pi !== 'undefined') {
@@ -80,6 +83,8 @@
                 onError: (error) => {
                     alert('Error al conectar: ' + error.message);
                 }
+                // Ejemplo: podrías querer enviar el token al backend
+                // fetch(`${BACKEND_URL}/api/auth/verify`, { … })
             });
         });
     </script>

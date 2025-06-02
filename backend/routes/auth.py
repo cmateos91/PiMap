@@ -11,6 +11,8 @@ auth_routes = Blueprint('auth', __name__, url_prefix='/api')
 
 # Obtener configuración desde variables de entorno
 PI_API_KEY = os.getenv('PI_API_KEY')
+PI_API_BASE_URL  = os.getenv('PI_API_BASE_URL', 'https://api.minepi.com/v2')
+
 
 @auth_routes.route('/me', methods=['POST'])
 def get_user_info():
@@ -32,7 +34,7 @@ def get_user_info():
         }
 
         # Hacer la petición a la API de Pi Network
-        user_url = "https://api.minepi.com/v2/me"
+        user_url = f"{PI_API_BASE_URL}/me"
         response = requests.get(user_url, headers=user_headers)
 
         # Verificar respuesta
@@ -70,7 +72,7 @@ def get_wallet_info():
         }
 
         # Hacer la petición a la API de Pi Network
-        wallet_url = "https://api.minepi.com/v2/wallet"
+        wallet_url = f"{PI_API_BASE_URL}/wallet"
         response = requests.get(wallet_url, headers=user_headers)
 
         # Verificar respuesta
@@ -113,7 +115,7 @@ def verify_auth():
         }
 
         # Hacer una petición simple a la API para verificar el token
-        user_url = "https://api.minepi.com/v2/me"
+        user_url = f"{PI_API_BASE_URL}/wallet"
         response = requests.get(user_url, headers=user_headers)
 
         # Verificar respuesta
