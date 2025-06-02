@@ -42,7 +42,7 @@ const PiPayments = {
             this.log('SDK de Pi Network detectado');
             // Inicializar el SDK ahora para asegurar que está listo
             try {
-                Pi.init({ version: "2.0", sandbox: true });
+                Pi.init({ version: "2.0", sandbox: false });
                 this.log('SDK de Pi Network inicializado correctamente');
             } catch (e) {
                 this.error('Error al inicializar el SDK de Pi:', e);
@@ -93,7 +93,7 @@ const PiPayments = {
             }
             
             // Inicializar el SDK antes de usarlo para asegurar que está listo
-            Pi.init({ version: "2.0", sandbox: true });
+            Pi.init({ version: "2.0", sandbox: false });
             
             // Deshabilitar botón durante el proceso
             if (this.config.donateButton) {
@@ -363,7 +363,7 @@ const PiPayments = {
             if (typeof Pi !== 'undefined') {
                 try {
                     this.log('Intentando reinicializar el SDK...');
-                    Pi.init({ version: "2.0", sandbox: true });
+                    Pi.init({ version: "2.0", sandbox: false });
                     
                     // Recargar la página después de un breve retraso
                     setTimeout(() => {

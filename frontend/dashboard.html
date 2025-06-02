@@ -109,7 +109,7 @@
             // Inicializar el SDK de Pi al cargar la página
             if (typeof Pi !== 'undefined') {
                 console.log('Inicializando SDK de Pi Network...');
-                Pi.init({ version: "2.0", sandbox: true });
+                Pi.init({ version: "2.0", sandbox: false });
             } else {
                 console.error('SDK de Pi Network no disponible');
             }

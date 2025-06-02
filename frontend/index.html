@@ -58,7 +58,7 @@
             if (typeof Pi !== 'undefined') {
                 console.log('Inicializando SDK de Pi Network...');
                 try {
-                    Pi.init({ version: "2.0", sandbox: true });
+                    Pi.init({ version: "2.0", sandbox: false });
                     console.log('SDK de Pi Network inicializado correctamente');
                 } catch (e) {
                     console.error('Error al inicializar SDK de Pi:', e);

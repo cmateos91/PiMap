@@ -32,7 +32,7 @@ const PiAuth = {
         }
         
         // Inicializar el SDK
-        Pi.init({ version: "2.0", sandbox: true });
+        Pi.init({ version: "2.0", sandbox: false });
         
         // Verificar si ya existe una sesión
         this.checkExistingSession();
@@ -153,7 +153,7 @@ const PiAuth = {
                 // Asegurarse de que el SDK está inicializado antes de usarlo
                 if (typeof Pi !== 'undefined') {
                     // Reinicializar el SDK para asegurar que esté correctamente configurado
-                    Pi.init({ version: "2.0", sandbox: true });
+                    Pi.init({ version: "2.0", sandbox: false });
                     
                     // Función para manejar pagos incompletos
                     const handleIncompletePayment = (payment) => {
