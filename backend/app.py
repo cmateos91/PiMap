@@ -47,7 +47,7 @@ def serve_validation_key():
     cuando alguien accede a https://<tu-app>.onrender.com/validation-key
     """
     # send_from_directory buscará en la carpeta "frontend" el archivo "validation-key.html"
-    return send_from_directory(app.static_folder, "validation-key.html")
+    return send_from_directory(app.static_folder, "validation-key.txt")
 
 @app.route('/<path:path>')
 def serve_frontend(path):
