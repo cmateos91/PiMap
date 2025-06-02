@@ -80,3 +80,8 @@ Thumbs.db
 # Archivos de base de datos
 *.sqlite
 *.db
+
+/backend/venv/
+*.pyc
+__pycache__/
+
