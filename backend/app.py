@@ -18,7 +18,7 @@ if not PI_API_KEY:
     logger.warning('PI_API_KEY no encontrada en variables de entorno, algunas funciones no estarán disponibles')
 
 # Configuración de la aplicación Flask
-app = Flask(__name__, static_folder=None)  # No usar carpeta estática predeterminada
+app = Flask(__name__, static_folder="frontend", static_url_path="")  # No usar carpeta estática predeterminada
 
 # Carpeta del frontend
 FRONTEND_FOLDER = Path(__file__).parent.parent / 'frontend'
@@ -38,6 +38,16 @@ def after_request(response):
 @app.route('/')
 def index():
     return send_from_directory(FRONTEND_FOLDER, 'index.html')
+
+# --- Nueva ruta para /validation-key ---
+@app.route("/validation-key")
+def serve_validation_key():
+    """
+    Devuelve el archivo validation-key.html que vive en /frontend/
+    cuando alguien accede a https://<tu-app>.onrender.com/validation-key
+    """
+    # send_from_directory buscará en la carpeta "frontend" el archivo "validation-key.html"
+    return send_from_directory(app.static_folder, "validation-key.html")
 
 @app.route('/<path:path>')
 def serve_frontend(path):
