@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pi Dribble Challenge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+</head>
+<body>
+  <nav>
+    <h1>Pi Dribble Challenge</h1>
+    <div id="userinfo"></div>
+    <button id="logoutBtn">Cerrar Sesión</button>
+  </nav>
+
+  <main>
+    <section id="stake-section">
+      <p>Paga <strong>0.01 Pi</strong> para participar en el torneo semanal:</p>
+      <button id="stakeBtn">Jugar por 0.01 Pi</button>
+    </section>
+
+    <section id="game-section" style="display:none;">
+      <p>Toque en la pantalla para mantener la pelota en el aire:</p>
+      <canvas id="dribbleCanvas" width="300" height="500" style="border:1px solid #000000;"></canvas>
+      <p>Puntaje: <span id="scoreDisplay">0</span></p>
+      <button id="submitScoreBtn" style="display:none;">Enviar Puntaje</button>
+    </section>
+
+    <section id="result-section" style="display:none;">
+      <p id="statusText"></p>
+      <button id="playAgainBtn">Jugar Otra Vez</button>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/payments.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

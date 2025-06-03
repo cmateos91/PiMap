@@ -1,9 +1,8 @@
-from flask import Flask, request, jsonify, send_from_directory
-import os
-from dotenv import load_dotenv
-import requests
-import logging
-from pathlib import Path
+from flask import Flask
+from backend.routes.auth import auth_bp
+from backend.routes.payments import payments_bp
+from backend.routes.game import game_bp
+from flask_cors import CORS
 
 # -----------------------------
 # Configurar logging
@@ -34,11 +33,13 @@ BASE_DIR = Path(__file__).parent
 FRONTEND_FOLDER = BASE_DIR / 'frontend'
 
 # Configuramos Flask para que use FRONTEND_FOLDER como carpeta estática
-app = Flask(
-    __name__,
-    static_folder=str(FRONTEND_FOLDER),
-    static_url_path=""
-)
+app = Flask(__name__)
+CORS(app)
+# Configuración de variables de entorno, si aplica
+# app.config.from_envvar('APP_CONFIG_FILE')
+# Registro de blueprints existentes\app.register_blueprint(auth_bp)
+app.register_blueprint(payments_bp)
+app.register_blueprint(game_bp)
 
 # -----------------------------
 # Middleware: habilitar CORS y quitar X-Frame-Options

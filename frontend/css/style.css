@@ -1,7 +1,10 @@
 /* Estilos generales */
 body {
     background-color: #f8f9fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* Estilos para el login */
@@ -26,6 +29,27 @@ body {
 /* Estilo para el estado de pago */
 #payment-result {
     transition: all 0.3s ease;
+}
+
+nav {
+  background: #222;
+  color: white;
+  padding: 10px;
+}
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#result-section p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+canvas {
+  background: #eef;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Animación para el spinner */
