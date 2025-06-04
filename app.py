@@ -1,8 +1,14 @@
-from flask import Flask
-from backend.routes.auth import auth_bp
-from backend.routes.payments import payments_bp
-from backend.routes.game import game_bp
+import os
+import logging
+from pathlib import Path
+
+from flask import Flask, send_from_directory
 from flask_cors import CORS
+from dotenv import load_dotenv
+
+from backend.routes.auth import auth_routes
+from backend.routes.payments import payment_routes
+from backend.routes.game import game_bp
 
 # -----------------------------
 # Configurar logging
@@ -37,8 +43,9 @@ app = Flask(__name__)
 CORS(app)
 # Configuración de variables de entorno, si aplica
 # app.config.from_envvar('APP_CONFIG_FILE')
-# Registro de blueprints existentes\app.register_blueprint(auth_bp)
-app.register_blueprint(payments_bp)
+# Registro de blueprints
+app.register_blueprint(auth_routes)
+app.register_blueprint(payment_routes)
 app.register_blueprint(game_bp)
 
 # -----------------------------
@@ -107,17 +114,6 @@ def serve_frontend(path):
 
     # 3) Si no se encontró, devolver 404
     return "Archivo no encontrado", 404
-
-# -----------------------------
-# Importar y registrar blueprints de rutas del backend
-# -----------------------------
-# Asegúrate de que tus módulos "routes/auth.py" y "routes/payments.py"
-# existan en la carpeta pi-starter/backend/routes/.
-from backend.routes.auth import auth_routes
-from backend.routes.payments import payment_routes
-
-app.register_blueprint(auth_routes)
-app.register_blueprint(payment_routes)
 
 # -----------------------------
 # Punto de entrada cuando se ejecuta directamente

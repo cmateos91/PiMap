@@ -27,7 +27,26 @@ server_headers = {
 }
 
 # Base URL de la API de Pi Network
+
 PI_API_BASE_URL = 'https://api.minepi.com/v2'
+
+# -----------------------------
+# Funciones auxiliares utilizadas por otros módulos
+# -----------------------------
+def verify_pi_transaction(txid: str, required_amount: float = 0.0) -> bool:
+    """Stub que simula la verificación de una transacción de Pi."""
+    logger.debug(
+        "Verificando transacción %s por un monto de %s Pi (stub)", txid, required_amount
+    )
+    return True
+
+
+def send_pi_to_user(address: str, amount: float) -> bool:
+    """Stub que simula el envío de Pi a un usuario."""
+    logger.debug(
+        "Enviando %s Pi al usuario %s (stub)", amount, address
+    )
+    return True
 
 # Función auxiliar para hacer peticiones a la API
 def make_api_request(url, method='POST', data=None):
